@@ -1,0 +1,22 @@
+{
+  "header": {
+    "title": "Income & Expense Manager"
+  },
+  "page": {
+    "add": "Add Transaction",
+    "view": "View Transactions",
+    "summary": "Summary"
+    
+  },
+  "buttons": {
+    "save": "Save",
+    "close": "Close",
+    "manageCategories": "Manage categories",
+    "add": "Add"
+  },
+  "messages": {
+    "saved": "Transaction saved",
+    "missingFields": "Please fill in all required fields",
+    "invalidAmount": "Invalid amount"
+  } 
+}
