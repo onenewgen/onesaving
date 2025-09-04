@@ -29,7 +29,7 @@ export default function ThemeToggle() {
       localStorage.setItem("onesaving.mode", theme)
       localStorage.setItem("theme", theme)
       console.debug("ThemeToggle: theme changed to", theme)
-    } catch (e) {
+    } catch {
       /* ignore */
     }
   }, [theme])

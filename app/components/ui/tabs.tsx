@@ -1,15 +1,20 @@
 "use client";
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-export const Tabs = ({ children, defaultValue, className = '' }: any) => (
+export const Tabs: React.FC<{ children?: ReactNode; defaultValue?: string; className?: string }> = ({ children, className = '' }) => (
   <div className={className}>{children}</div>
 );
 
-export const TabsList = ({ children, className = '' }: any) => (
+export const TabsList: React.FC<{ children?: ReactNode; className?: string }> = ({ children, className = '' }) => (
   <div className={`flex ${className}`}>{children}</div>
 );
 
-export const TabsTrigger = ({ children, value, className = '', onClick }: any) => (
+export const TabsTrigger: React.FC<{
+  children?: ReactNode;
+  value?: string;
+  className?: string;
+  onClick?: (value?: string) => void;
+}> = ({ children, value, className = '', onClick }) => (
   <button
     type="button"
     onClick={() => onClick && onClick(value)}
@@ -20,6 +25,6 @@ export const TabsTrigger = ({ children, value, className = '', onClick }: any) =
   </button>
 );
 
-export const TabsContent = ({ children, value, className = '' }: any) => <div className={className}>{children}</div>;
+export const TabsContent: React.FC<{ children?: ReactNode; value?: string; className?: string }> = ({ children, className = '' }) => <div className={className}>{children}</div>;
 
 export default Tabs;

@@ -25,6 +25,7 @@ export default function LocaleProvider({ children }: { children: React.ReactNode
     } catch {}
   }, [locale]);
 
+  // setLocale intentionally not included in dependencies since it's stable
   const ctx = useMemo(() => ({ locale, setLocale }), [locale]);
 
   return <LocaleContext.Provider value={ctx}>{children}</LocaleContext.Provider>;

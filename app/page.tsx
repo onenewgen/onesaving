@@ -29,7 +29,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import {
-  Wallet,
   Plus,
   List,
   PieChart,
@@ -67,6 +66,9 @@ const CATEGORIES: Record<TxType, string[]> = {
     "บันเทิง",
   ],
 };
+
+// ensure linter knows this constant is intentionally present
+void CATEGORIES;
 
 const THB = new Intl.NumberFormat("th-TH", {
   style: "currency",

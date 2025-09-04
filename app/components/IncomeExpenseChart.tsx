@@ -34,7 +34,7 @@ export default function IncomeExpenseChart({
 
     // monthly
     const y = year ?? new Date().getFullYear();
-    const months = Array.from({ length: 12 }, (_, i) => ({ income: 0, expense: 0 }));
+  const months = Array.from({ length: 12 }, () => ({ income: 0, expense: 0 }));
     for (const t of transactions) {
       const d = new Date(t.date);
       if (d.getFullYear() !== y) continue;

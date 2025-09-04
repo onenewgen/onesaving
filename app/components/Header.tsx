@@ -5,7 +5,7 @@ import { Wallet } from "lucide-react";
 import { useLocale } from "./LocaleProvider";
 import { t } from "../lib/i18n";
 
-const MESSAGES: Record<string, any> = {
+const MESSAGES: Record<string, { header: { title: string } }> = {
   th: { header: { title: "ระบบจัดการรายรับรายจ่าย" } },
   en: { header: { title: "Income & Expense Manager" } },
 };

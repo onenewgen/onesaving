@@ -186,8 +186,8 @@ export default function FinanceManagerPage() {
                     <div className="space-y-4">
                       <div className="space-y-2">
                         <Label htmlFor="type">ประเภท</Label>
-                        <Select value={type} onValueChange={(v: TxType) => { setType(v); setCategory(""); }}>
-                          <SelectTrigger id="type">
+                        <Select id="type" value={type} onValueChange={(v: string) => { setType(v as TxType); setCategory(""); }}>
+                          <SelectTrigger>
                             <SelectValue placeholder="เลือกประเภท" />
                           </SelectTrigger>
                           <SelectContent>
@@ -211,8 +211,8 @@ export default function FinanceManagerPage() {
 
                       <div className="space-y-2">
                         <Label htmlFor="category">หมวดหมู่</Label>
-                        <Select value={category} onValueChange={setCategory} disabled={!type}>
-                          <SelectTrigger id="category">
+                        <Select id="category" value={category} onValueChange={setCategory} disabled={!type}>
+                          <SelectTrigger>
                             <SelectValue placeholder="เลือกหมวดหมู่" />
                           </SelectTrigger>
                           <SelectContent>
@@ -295,8 +295,8 @@ export default function FinanceManagerPage() {
             <TabsContent value="view" className="mt-6">
               <div className="mb-4 max-w-xs">
                 <Label htmlFor="filter">กรองตาม</Label>
-                <Select value={filter} onValueChange={(v: "all" | TxType) => setFilter(v)}>
-                  <SelectTrigger id="filter" className="mt-2">
+                <Select id="filter" value={filter} onValueChange={(v: string) => setFilter(v as "all" | TxType)}>
+                  <SelectTrigger className="mt-2">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
