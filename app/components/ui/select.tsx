@@ -2,10 +2,10 @@
 import React, { ReactNode } from 'react';
 
 // Marker components — they do not render DOM themselves when used inside <Select>
-export const SelectTrigger: React.FC<{ children?: ReactNode }> = () => null;
-export const SelectContent: React.FC<{ children?: ReactNode }> = () => null;
+export const SelectTrigger: React.FC<{ children?: ReactNode; className?: string }> = () => null;
+export const SelectContent: React.FC<{ children?: ReactNode; className?: string }> = () => null;
 export const SelectItem: React.FC<{ value: string; children?: ReactNode }> = () => null;
-export const SelectValue: React.FC<{ placeholder?: string }> = () => null;
+export const SelectValue: React.FC<{ placeholder?: string; className?: string }> = () => null;
 
 interface SelectProps {
   children?: ReactNode;
@@ -13,7 +13,6 @@ interface SelectProps {
   onValueChange?: (value: string) => void;
   disabled?: boolean;
   className?: string;
-  [key: string]: any;
 }
 
 export const Select: React.FC<SelectProps> = ({ children, value, onValueChange, disabled, className = '' }) => {
@@ -29,19 +28,19 @@ export const Select: React.FC<SelectProps> = ({ children, value, onValueChange, 
   const childArray = React.Children.toArray(children) as ReactNode[];
 
   // Find SelectContent if present
-  const content = childArray.find((c) => React.isValidElement(c) && (c.type as unknown) === SelectContent) as React.ReactElement | undefined;
+  const content = childArray.find((c) => React.isValidElement(c) && (c.type as unknown) === SelectContent) as React.ReactElement<{ children?: ReactNode }> | undefined;
 
   let items: ReactNode[] = [];
 
-  if (content && (content as any).props && (content as any).props.children) {
-    items = React.Children.toArray((content as any).props.children) as ReactNode[];
+  if (content && content.props && content.props.children) {
+    items = React.Children.toArray(content.props.children) as ReactNode[];
   } else {
     // fallback: look for direct option children or SelectItem children
     items = childArray.filter((c) => {
       if (!c) return false;
       if (!React.isValidElement(c)) return false;
       // native option element
-      const t = (c.type as unknown) as string | React.ComponentType<any>;
+  const t = (c.type as unknown) as string | React.ComponentType<unknown>;
       if (typeof t === 'string' && t.toLowerCase() === 'option') return true;
       // SelectItem marker
       if (t === SelectItem) return true;

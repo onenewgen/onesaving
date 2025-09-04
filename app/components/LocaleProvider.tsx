@@ -4,7 +4,7 @@ import React, { createContext, useContext, useEffect, useMemo, useState } from "
 
 type Locale = "en" | "th";
 
-const LocaleContext = createContext({ locale: "th" as Locale, setLocale: (l: Locale) => {} });
+const LocaleContext = createContext({ locale: "th" as Locale, setLocale: (_setLocale: Locale) => {} });
 
 export function useLocale() {
   return useContext(LocaleContext);
